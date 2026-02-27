@@ -1,4 +1,4 @@
-module jwtmanager
+module github.com/andreypremiere/jwtmanager
 
 go 1.25.7
 
