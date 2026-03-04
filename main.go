@@ -11,7 +11,7 @@ import (
 // UserClaims — конкретная структура данных для твоего проекта
 type UserClaims struct {
 	UserId string `json:"user_id"`
-	Role   string `json:"role"`
+	// Role   string `json:"role"`
 	jwt.RegisteredClaims
 }
 
@@ -30,10 +30,9 @@ func NewJWTManager(secretKey string, tokenDuration time.Duration) *JWTManager {
 }
 
 // Generate создает новый токен для пользователя
-func (m *JWTManager) Generate(userId string, role string) (string, error) {
+func (m *JWTManager) Generate(userId string) (string, error) {
 	claims := UserClaims{
 		UserId: userId,
-		Role:   role,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(m.tokenDuration)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
