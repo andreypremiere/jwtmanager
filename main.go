@@ -31,7 +31,7 @@ func NewJWTManager(secretKey string, tokenDuration time.Duration) *JWTManager {
 }
 
 // Generate создает новый токен для пользователя
-func (m *JWTManager) Generate(userId string, roomId string) (string, error) {
+func (m *JWTManager) Generate(userId string) (string, error) {
 	claims := UserClaims{
 		UserId: userId,
 		// RoomId: roomId,
